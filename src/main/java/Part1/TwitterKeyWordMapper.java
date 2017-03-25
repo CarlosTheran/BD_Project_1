@@ -1,7 +1,6 @@
 package Part1;
 
 
-
         import org.apache.hadoop.io.IntWritable;
         import org.apache.hadoop.io.LongWritable;
         import org.apache.hadoop.io.Text;
@@ -17,7 +16,7 @@ public class TwitterKeyWordMapper extends Mapper<LongWritable, Text, Text, IntWr
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String rawTweet = value.toString();
-
+//h
         try {
             Status status = TwitterObjectFactory.createStatus(rawTweet);
             String tweet = status.getText().toUpperCase();
@@ -46,9 +45,6 @@ public class TwitterKeyWordMapper extends Mapper<LongWritable, Text, Text, IntWr
             if (tweet.contains("CHANGE")){
                 context.write(new Text("CHANGE"), new IntWritable(1));
             }
-
-
-
 
         }
         catch(TwitterException e){
